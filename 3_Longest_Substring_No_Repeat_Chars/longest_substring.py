@@ -28,6 +28,17 @@ class Solution:
         
         # return (c, substrings)
         return c
+    
+    # https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1363804/Simplest-python-solution
+    def fun(self, s):
+        max_len = 0
+        temp = ""
+        for x in s:
+            if x in temp:
+                max_len = max(max_len, len(temp))
+                temp = temp[temp.find(x) + 1:]
+            temp += x
+        return max(max_len, len(temp))
         
 
 sample1 = 'abcabccbb'
@@ -37,17 +48,23 @@ sample3 = 'pwwkew'
 solution = Solution()
 result = solution.lengthOfLongestSubstring(sample1)
 print(result)
+print(solution.fun(sample1))
 
 result = solution.lengthOfLongestSubstring(sample2)
 print(result)
+print(solution.fun(sample2))
 
 result = solution.lengthOfLongestSubstring(sample3)
 print(result)
+print(solution.fun(sample3))
 
 # # expected: y1239
 result = solution.lengthOfLongestSubstring('yyy12399bbcde')
 print(result)
+print(solution.fun('yyy12399bbcde'))
 
 result = solution.lengthOfLongestSubstring('hello world')
 print(result)
+print(solution.fun('hello world'))
+
 
