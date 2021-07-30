@@ -16,7 +16,7 @@ namespace ShortestPath
             CityFlight currentCity = startingCity;
             var cheapestPriceTable = new Dictionary<string, decimal>
             {
-                [startingCity.Value] = 0
+                [startingCity.CityName] = 0
             };
             var cheapestPreviousCityStopOver = new Dictionary<string, string>();
 
@@ -52,10 +52,24 @@ namespace ShortestPath
                         // key: destination
                         // value: source
                         cheapestPreviousCityStopOver[adjacentCity.CityName] = currentCity.CityName;
-                    }                   
+                    }
+                    else
+                    {
+                        unvisitedCities.Remove(adjacentCity);
+                    }
                 }
 
-                currentCity = unvisitedCities.Count == 0 ? null : unvisitedCities.First();
+
+                currentCity = unvisitedCities
+                    .Select(x => new
+                    {
+                        City = x,
+                        x.CityName,
+                        Price = cheapestPriceTable[x.CityName]
+                    })
+                    .OrderBy(x => x.Price)
+                    .FirstOrDefault()?.City;
+                    
             }
 
             var currentCityName = finalDestination.CityName;
