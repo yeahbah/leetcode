@@ -27,7 +27,7 @@ namespace ShortestPath
                 visitedCities[currentCity.CityName] = true;
                 if (unvisitedCities.Contains(currentCity))
                 {
-                    unvisitedCities.Remove(currentCity);
+                    unvisitedCities.RemoveAll(c => c.CityName == currentCity.CityName);
                 }
 
                 // check each adjacent vertexes
@@ -53,12 +53,7 @@ namespace ShortestPath
                         // value: source
                         cheapestPreviousCityStopOver[adjacentCity.CityName] = currentCity.CityName;
                     }
-                    else
-                    {
-                        unvisitedCities.Remove(adjacentCity);
-                    }
                 }
-
 
                 currentCity = unvisitedCities
                     .Select(x => new
