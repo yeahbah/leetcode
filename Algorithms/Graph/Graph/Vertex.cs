@@ -27,20 +27,27 @@ namespace Graph
                 }
             }
         }
-
-        public static Vertex DepthFirstSearch(Vertex startVertex, string searchValue, IDictionary<Vertex, bool> visitedVertices)
+        
+        public static void BreadthFirstTraverse(Vertex startVertex, Action<Vertex> outputProc)
         {
-            throw new NotImplementedException();
-        }
+            var queue = new Queue<Vertex>();
+            var visitedVertices = new Dictionary<Vertex, bool>();
+            queue.Enqueue(startVertex);
+            visitedVertices[startVertex] = true;
 
-        public static void BreadthFirstTraverse(Vertex startVertex, IDictionary<Vertex, bool> visitedVertices, Action<string> outputProc)
-        {
+            while (queue.Count > 0)
+            {
+                var currentVertex = queue.Dequeue();
+                outputProc?.Invoke(currentVertex);
+                foreach (var adjacentVertex in currentVertex.AdjacentVertexes)
+                {
+                    if (visitedVertices.ContainsKey(adjacentVertex)) 
+                        continue;
 
-        }
-
-        public static Vertex BreadthFirstSearch(Vertex startVertex, string searchValue, IDictionary<Vertex, bool> visitedVertices)
-        {
-            throw new NotImplementedException();
+                    visitedVertices[adjacentVertex] = true;
+                    queue.Enqueue(adjacentVertex);                    
+                }
+            }           
         }
     }
 }

@@ -22,7 +22,8 @@ namespace Graph
             c.AdjacentVertexes.Add(e);
 
             var visitedVertices = new Dictionary<Vertex, bool>();
-            Vertex.DepthFirstTraverse(a, visitedVertices, v => Console.WriteLine(v.Value));
+            //Vertex.DepthFirstTraverse(a, visitedVertices, v => Console.WriteLine(v.Value));
+            Vertex.BreadthFirstTraverse(a, v => Console.WriteLine(v.Value));
         }
     }
 }
