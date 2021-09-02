@@ -1,8 +1,8 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        temp = str(x)
-        temp = temp[::-1]
-        return str(x) == temp
+        temp1 = str(x)
+        temp = temp1[::-1]
+        return temp1 == temp
 
     
 solution = Solution()
