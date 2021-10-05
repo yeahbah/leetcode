@@ -31,8 +31,8 @@ namespace IntegerToRoman
             {                
                 foreach (var symbol in symbols)
                 {
-                    decimal temp = num / symbol.Key;
-                    if (Math.Truncate(temp) > 0)
+                    int temp = num / symbol.Key;
+                    if (temp > 0)
                     {
                         num -= symbol.Key;
                         result += symbol.Value;
