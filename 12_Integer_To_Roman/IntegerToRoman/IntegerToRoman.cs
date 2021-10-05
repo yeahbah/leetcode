@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace IntegerToRoman
 {
@@ -42,6 +43,23 @@ namespace IntegerToRoman
             }
 
             return result;
+        }
+
+        // https://leetcode.com/problems/integer-to-roman/discuss/1493756/Java-100-Faster
+        public string IntToRoman2(int num)
+        {
+            var symbol = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+            var value = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+            var sb = new StringBuilder();
+            for (int i = 0; i < symbol.Length; i++)
+            {
+                while (num >= value[i])
+                {
+                    sb.Append(symbol[i]);
+                    num -= value[i];
+                }
+            }
+            return sb.ToString();
         }
     }
 }

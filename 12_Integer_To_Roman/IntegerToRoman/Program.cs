@@ -15,13 +15,13 @@ namespace IntegerToRoman
             //Console.WriteLine(IntegerToRoman.ConvertIntToRoman(50));
             //Console.WriteLine(IntegerToRoman.ConvertIntToRoman(100));
             //Console.WriteLine(IntegerToRoman.ConvertIntToRoman(500));
-            Console.WriteLine(solution.IntToRoman(4));
-            Console.WriteLine(solution.IntToRoman(40));
-            Console.WriteLine(solution.IntToRoman(400));
-            Console.WriteLine(solution.IntToRoman(9));
-            Console.WriteLine(solution.IntToRoman(90));
-            Console.WriteLine(solution.IntToRoman(900));
-            Console.WriteLine(solution.IntToRoman(1994));
+            Console.WriteLine(solution.IntToRoman2(4));
+            Console.WriteLine(solution.IntToRoman2(40));
+            Console.WriteLine(solution.IntToRoman2(400));
+            Console.WriteLine(solution.IntToRoman2(9));
+            Console.WriteLine(solution.IntToRoman2(90));
+            Console.WriteLine(solution.IntToRoman2(900));
+            Console.WriteLine(solution.IntToRoman2(1994));
         }
     }
 }
