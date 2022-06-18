@@ -27,6 +27,37 @@ namespace Graph
                 }
             }
         }
+
+        public static void DepthFirstTraverseIterative(Vertex startVertex, Action<Vertex> outputProc)
+        {
+            var visitedVertex = new Dictionary<Vertex, bool>();
+                      
+            outputProc?.Invoke(startVertex);
+            visitedVertex[startVertex] = true;
+
+            foreach (var v in startVertex.AdjacentVertexes)
+            {
+                if (visitedVertex.ContainsKey(v)) continue;
+
+                var queue = new Queue<Vertex>();
+                queue.Enqueue(v);
+                while (queue.Count > 0)
+                {
+                    
+
+                    var x = queue.Dequeue();
+                    outputProc?.Invoke(x);
+                    visitedVertex[x] = true;
+
+                    foreach(var y in x.AdjacentVertexes)
+                    {
+                       queue.Enqueue(y);
+                    }
+                }
+
+              
+            }            
+        }
         
         public static void BreadthFirstTraverse(Vertex startVertex, Action<Vertex> outputProc)
         {
