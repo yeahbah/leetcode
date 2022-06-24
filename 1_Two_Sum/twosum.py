@@ -1,4 +1,6 @@
 class Solution:
+
+    # O(N^2)
     def twoSum(self, nums, target: int):
             result = []
             for i in range(0, len(nums)):
@@ -11,6 +13,7 @@ class Solution:
                 if len(result) > 0:
                     return result  
 
+    # O(N)
     def twoSum2(self, nums, target: int):
         dict = {}
         for i in range(len(nums)):
